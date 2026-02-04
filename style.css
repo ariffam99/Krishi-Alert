@@ -1,0 +1,314 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+/* Language toggle */
+.lang-toggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  width: 60px;
+}
+
+.lang-toggle button {
+  margin-left: 5px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+/* HERO */
+.hero {
+  max-width: 520px;
+  margin: 90px auto;
+}
+
+/* CARD */
+.card {
+  max-width: 420px;
+  margin: 25px auto;
+  padding: 22px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  animation: fadeUp 0.6s ease;
+}
+
+.hidden { display: none; }
+
+select, button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 14px;
+  border-radius: 8px;
+  border: none;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 0;
+}
+
+.alert {
+  border-left: 5px solid #ffc107;
+  background: rgba(255,193,7,0.15);
+  animation: pulse 2s infinite;
+}
+
+/* RAIN */
+.rain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 10px,
+    rgba(255,255,255,0.2) 11px
+  );
+  animation: rain 0.4s linear infinite;
+  pointer-events: none;
+}
+
+/* WIND */
+.wind::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255,255,255,0.2),
+    transparent
+  );
+  animation: wind 1.2s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rain {
+  from { background-position: 0 0; }
+  to { background-position: 0 20px; }
+}
+
+@keyframes wind {
+  from { background-position: 0 0; }
+  to { background-position: 100% 0; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 rgba(255,193,7,0.4); }
+  70% { box-shadow: 0 0 20px rgba(255,193,7,0.8); }
+  100% { box-shadow: 0 0 0 rgba(255,193,7,0.4); }
+}
+
+
+/*  crops market*/
+.section-container {
+  padding: 40px 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.section {
+  width: 100%;
+  max-width: 900px;
+  color: #fff;
+}
+
+.glass {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  animation: fadeUp 0.8s ease;
+}
+
+.section h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.weather-select {
+  margin-bottom: 20px;
+}
+
+.weather-select label {
+  display: block;
+  margin-bottom: 6px;
+  opacity: 0.85;
+}
+
+.weather-select select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-size: 15px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.crops-news {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.crops-news th,
+.crops-news td {
+  padding: 12px;
+  text-align: center;
+}
+
+.crops-news th {
+  background: rgba(0,0,0,0.35);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.crops-news tr {
+  transition: background 0.3s;
+}
+
+.crops-news tr:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.up {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.down {
+  color: #f44336;
+}
+
+.advisory {
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(255,193,7,0.15);
+  border-left: 5px solid #ffc107;
+  animation: pulse 2s infinite;
+}
+
+.last-advise {
+  text-align: center;
+  margin: 10px 0 30px;
+  opacity: 0.7;
+  font-size: 13px;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 rgba(255,193,7,0.4); }
+  70% { box-shadow: 0 0 25px rgba(255,193,7,0.8); }
+  100% { box-shadow: 0 0 0 rgba(255,193,7,0.4); }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .section h2 {
+    font-size: 1.4rem;
+  }
+}
+

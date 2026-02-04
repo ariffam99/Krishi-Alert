@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Krishi Alert</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- LANGUAGE TOGGLE -->
+  <div class="lang-toggle">
+    <button  onclick="setLang('en')">EN</button>
+    <button  onclick="setLang('hi')">हिंदी</button>
+    <button  onclick="setLang('ur')">اردو</button>
+  </div>
+
+  <!-- BACKGROUND EFFECTS -->
+  <div id="rain" class="rain hidden"></div>
+  <div id="wind" class="wind hidden"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1 id="title">Krishi Weather Alert</h1>
+    <p id="subtitle">Smart alerts to protect crops & farmers</p>
+    <button onclick="openLocation()" id="getStarted">Get Started</button>
+  </section>
+
+  <!-- LOCATION -->
+  <section id="locationBox" class="card hidden">
+    <h3 id="locTitle">Select Your State</h3>
+    <select id="district">
+      <option value="">Choose State</option>
+      <option>Delhi</option>
+      <option>Maharashtra</option>
+      <option>Banglore</option>
+      <option>Tamil Nadu</option>
+      <option>Gujarat</option>
+      <option value="">Uttar Pradesh</option>
+      <option value="">West Bengal</option>
+      <option value="">Rajasthan</option>
+      <option value="">Telangana</option>
+      <option value="">Andhra Pradesh</option>
+      <option value="">Madhya Pradesh</option>
+      <option value="">Kerala</option>
+      <option value="">Haryana</option>
+      <option value="">Bihar</option>
+      <option value="">	Odisha</option>
+      <option value="">Punjab</option>
+      <option value="">Assam</option>
+      <option value="">Chhattisgarh</option>
+      <option value="">Jharkhand</option>
+      <option value="">	Uttarakhand</option>
+      <option value="">Jammu & Kashmir (UT)</option>
+      <option value="">Himachal Pradesh</option>
+      <option value="">	Goa</option>
+      <option value="">Tripura</option>
+      <option value="">Meghalaya</option>
+      <option value="">Sikkim</option>
+      <option value="">Puducherry (UT)</option>
+      <option value="">	Manipur</option>
+      <option value="">Nagaland</option>
+      <option value="">Arunachal Pradesh</option>
+      <option value="">Mizoram</option>
+      <option value="">Chandigarh (UT)</option>
+      <option value="">Andaman & Nicobar (UT)</option>
+      <option value="">	Ladakh (UT)</option>
+      
+    </select>
+    <button onclick="saveLocation()" id="continueBtn">Continue</button>
+    <p id="locError" class="error"></p>
+  </section>
+
+  <!-- SETTINGS -->
+  <section id="settingsBox" class="card hidden">
+    <h3 id="settingsTitle">Alert Settings</h3>
+
+    <div class="row">
+      <span id="enableText">Enable Alerts</span>
+      <input type="checkbox" id="enableAlert" checked>
+    </div>
+
+    <div class="row">
+      <span id="soundText">Alert Sound</span>
+      <input type="checkbox" id="soundToggle" checked>
+    </div>
+
+    <select id="alertType">
+      <option value="rain">🌧️ Heavy Rain</option>
+      <option value="heat">🔥 Heat Wave</option>
+      <option value="storm">⛈️ Storm</option>
+    </select>
+
+    <button onclick="generateAlert()" id="showAlertBtn">Show Alert</button>
+  </section>
+
+  <!-- ALERT -->
+  <section id="alertBox" class="card alert hidden">
+    <h3>⚠️ Alert</h3>
+    <p id="alertText"></p>
+  </section>
+
+  <!-- SOUNDS -->
+  <audio id="stormSound" preload="auto" loop>
+    <source src="storm-417583.mp3">
+  </audio>
+
+  <audio id="rainSound" preload="auto" loop>
+    <source src="mixkit-rain-and-thunder-storm-2390.wav">
+  </audio>
+
+  <audio id="heatSound" preload="auto">
+    <source src="mixkit-little-birds-singing-in-the-trees-17.wav">
+  </audio>
+
+
+
+  <!-- crops market codes starts from here -->
+
+  <section class="section-container">
+  <div class="section glass">
+    <h2 id="lang0">🌾 Crop Market Rates</h2>
+
+    <!-- Weather Selection -->
+    <div class="weather-select">
+      <label for="weather" id="lang1">Select Weather Condition Better Advise</label>
+      <select id="weather" onchange="showAdvisory()">
+        <option value="normal" id="lang2">🌤️ Normal</option>
+        <option value="rain" id="lang3">🌧️ Rainy</option>
+        <option value="summer" id="lang4">🔥 Summer</option>
+        <option value="winter" id="lang5">❄️ Winter</option>
+      </select>
+    </div>
+
+    <!-- Price Table -->
+    <div class="table-wrapper">
+      <table class="crops-news">
+        <thead>
+          <tr>
+            <th id="lang6">Crop</th>
+            <th id="lang7">Today (₹/Qt)</th>
+            <th id="lang8">Yesterday (₹/Qt)</th>
+            <th id="lang9">Trend</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="lang10">Wheat</td>
+            <td>2200</td>
+            <td>2150</td>
+            <td class="up">▲</td>
+          </tr>
+          <tr>
+            <td id="lang11">Paddy</td>
+            <td>1850</td>
+            <td>1800</td>
+            <td class="up">▲</td>
+          </tr>
+          <tr>
+            <td id="lang12">Maize</td>
+            <td>1650</td>
+            <td>1600</td>
+            <td class="up">▲</td>
+          </tr>
+          <tr>
+            <td id="lang13">Soybean</td>
+            <td>4800</td>
+            <td>4700</td>
+            <td class="up">▲</td>
+          </tr>
+          <tr>
+            <td id="lang14">Chickpea</td>
+            <td>5100</td>
+            <td>5000</td>
+            <td class="up">▲</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Advisory -->
+    <div class="advisory"id="advisoryBox" id=" lang15">
+      🌤️ Normal Weather: Store crops safely and monitor market prices regularly.
+    </div>
+  </div>
+</section>
+
+<section class="last-advise">
+  <p>© 2025 Krishi Alert | Designed with "Md. Arif"❤️ for Farmers</p>
+  <small >⚠ Weather data is approximate. Please verify with local agencies.</small>
+</section>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
